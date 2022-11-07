@@ -17,7 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // randomQuotes = DBHelper.dbHelper.fetchRandomQuote(tableName: 'randomQuote');
+   
 
     Future.delayed(
       const Duration(seconds: 5),
@@ -26,22 +26,14 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  List<Color> colors = [
-    Colors.blue,
-    Colors.blueGrey,
-    Colors.lightBlue,
-    Colors.green,
-    Colors.deepOrangeAccent,
-    Colors.teal,
-    Colors.red,
-  ];
+ 
 
-  Random random = Random();
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colors[random.nextInt(colors.length)],
+      backgroundColor:Colors.primaries[Random().nextInt(Colors.primaries.length)], 
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
@@ -51,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: FutureBuilder(
           future: DBHelper.dbHelper.fetchRandomQuote(
               tableName:
-                  'randomQuote'), //QuotesAPIHelper.quotesAPIHelper.fetchRandomQuote(),
+                  'randomQuote'), 
           builder: (context, snapshot) {
             if (snapshot.hasError) {
               return Center(
